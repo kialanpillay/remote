@@ -142,8 +142,9 @@ function Weather({ data, wind }) {
           font-size: 1.5rem;
           font-weight: 600;
         }
-
-        .home h2:hover {
+        
+        .home h2:hover,
+        .datetime {
           color: #0070f3;
         }
 

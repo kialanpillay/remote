@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import Icon from '@material-ui/core/Icon';
+import Head from "next/head";
+import Link from "next/link";
+import Icon from "@material-ui/core/Icon";
 
 export default function Home() {
   return (
@@ -8,12 +8,18 @@ export default function Home() {
       <Head>
         <title>Remote</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
       </Head>
 
       <main>
         <h1 className="title">
-          Welcome to Remote <Icon style={{ fontSize: 64 }}>settings_remote</Icon>
+          Welcome to Remote{" "}
+          <Icon style={{ fontSize: 64, color: "#0070f3" }}>
+            settings_remote
+          </Icon>
         </h1>
 
         <p className="description">
@@ -31,22 +37,14 @@ export default function Home() {
             <p>View detailed market data from TradingView.</p>
           </a>
 
-          <a
-            href="/news"
-            className="card"
-          >
+          <a href="/news" className="card">
             <h3>News &rarr;</h3>
             <p>Discover top headlines from around the country.</p>
           </a>
 
-          <a
-            href="/weather"
-            className="card"
-          >
+          <a href="/weather" className="card">
             <h3>Weather &rarr;</h3>
-            <p>
-              Check your local weather conditions.
-            </p>
+            <p>Check your local weather conditions.</p>
           </a>
         </div>
       </main>
@@ -57,7 +55,8 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          &copy; Kialan Pillay. Remote is a tool to boost your productivity whilst working from home. 
+          &copy; Kialan Pillay. Remote is a tool to boost your productivity
+          whilst working from home.
         </a>
       </footer>
 
@@ -205,5 +204,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
