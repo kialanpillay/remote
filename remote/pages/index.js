@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className="description">
-          A hub for daily essential information.
+          A hub for daily essential information, without searching anything.
         </p>
 
         <div className="grid">
@@ -45,7 +45,7 @@ export default function Home() {
           >
             <h3>Weather &rarr;</h3>
             <p>
-              Check the local forecast for the next few days.
+              Check your local weather conditions.
             </p>
           </a>
         </div>

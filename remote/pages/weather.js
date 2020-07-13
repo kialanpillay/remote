@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Head from "next/head";
-import Icon from '@material-ui/core/Icon';
+import Icon from "@material-ui/core/Icon";
+import getConfig from "next/config";
+
+const { serverRuntimeConfig } = getConfig();
+console.log(serverRuntimeConfig)
 
 function Weather({ data }) {
   const wind_direction = [
@@ -27,7 +31,10 @@ function Weather({ data }) {
       <Head>
         <title>Remote - Weather</title>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
       </Head>
       <main>
         <h1 className="title">WEATHER</h1>
@@ -53,13 +60,15 @@ function Weather({ data }) {
           </h2>
           <h2>
             Wind speed of {(data.wind.speed * 3.6).toFixed(2)} km/h{" "}
-            {wind_direction[Math.round(data.wind.deg / 22.5)]} today
+            {wind_direction[Math.round(data.wind.deg / 22.5)]} currently
           </h2>
-          <h2>
-            <Link href="/">
-              <a> &larr; Back Home</a>
-            </Link>
-          </h2>
+          <div className="home">
+            <h2>
+              <Link href="/">
+                <a> &larr; Back Home</a>
+              </Link>
+            </h2>
+          </div>
         </div>
       </main>
 
@@ -130,9 +139,16 @@ function Weather({ data }) {
           width: 60%;
         }
 
-        .card h3 {
+        .card h2 {
           margin: 0 0 1rem 0;
           font-size: 1.5rem;
+          font-weight: 300;
+        }
+
+        .home h2 {
+          margin: 0 0 1rem 0;
+          font-size: 1.5rem;
+          font-weight: 600;
         }
 
         .card p {
@@ -166,14 +182,15 @@ function Weather({ data }) {
   );
 }
 
-
 export async function getServerSideProps(context) {
-  const rip = await fetch(`https://ipapi.co/json/`)
+  const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
   const res = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=`+ip.city+`&appid=8941e9cb367f4bb6e1a7311f3ed46c88&units=metric`
+    `http://api.openweathermap.org/data/2.5/weather?q=${ip.city}
+      &appid=8941e9cb367f4bb6e1a7311f3ed46c88&units=metric`
   );
   const data = await res.json();
+  //const w = await fetch(`https://localhost:3000/api/wind/`);
   return { props: { data } };
 }
 
