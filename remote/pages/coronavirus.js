@@ -198,11 +198,9 @@ function Coronavirus({ data, ip }) {
 }
 
 export async function getServerSideProps(context) {
-  const url = "https://pomber.github.io/covid19/timeseries.json";
   const res_ip = await fetch(`https://ipapi.co/json/`);
   const ip = await res_ip.json();
-  //const res = await fetch(`http://localhost:3000/api/coronavirus`);
-  const res = await fetch(url);
+  const res = await fetch(`http://localhost:3000/api/coronavirus`);
   const data = await res.json();
   return { props: { data, ip } };
 }
