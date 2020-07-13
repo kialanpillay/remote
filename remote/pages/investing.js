@@ -2,15 +2,15 @@ import Link from "next/link";
 import Head from "next/head";
 import Chart from "../components/Chart";
 
-function Markets({ data }) {
+function Investing() {
   return (
     <div className="container">
       <Head>
-        <title>Remote - Market</title>
+        <title>Remote - Investing</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1 className="title">FINANCIAL MARKETS</h1>
+        <h1 className="title">INVESTING</h1>
         <div className="data">
           <Chart />
         </div>
@@ -59,11 +59,6 @@ function Markets({ data }) {
         .description {
           text-align: center;
         }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
         
         .home h2 {
           margin: 0 0 1rem 0;
@@ -107,4 +102,4 @@ function Markets({ data }) {
   );
 }
 
-export default Markets;
+export default Investing;
