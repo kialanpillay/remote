@@ -64,7 +64,7 @@ function Markets({ data }) {
           line-height: 1.5;
           font-size: 1.5rem;
         }
-
+        
         .home h2 {
           margin: 0 0 1rem 0;
           font-size: 1.5rem;

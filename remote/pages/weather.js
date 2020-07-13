@@ -4,10 +4,10 @@ import Icon from "@material-ui/core/Icon";
 import getConfig from "next/config";
 
 const { serverRuntimeConfig } = getConfig();
-console.log(serverRuntimeConfig)
+console.log(serverRuntimeConfig);
 
 function Weather({ data, wind }) {
-  console.log(wind.direction)
+  console.log(wind.direction);
   return (
     <div className="container">
       <Head>
@@ -21,29 +21,40 @@ function Weather({ data, wind }) {
       <main>
         <h1 className="title">WEATHER</h1>
         <div className="card">
-          {/*<img
-            className="weatherIcon"
-            src={
-              "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"
-            }
-          ></img>*/}
-          <h1>
-            {data.name.toUpperCase()} - <i>{data.weather[0].description}</i>
-          </h1>
+          <div className="grid">
+            <div>
+              <h1>
+                {data.name.toUpperCase()} - <i>{data.weather[0].description}</i>
+              </h1>
 
-          <h4 className="datetime">{new Date().toGMTString()} </h4>
-          <h2>
-            The temperature is {Math.round(data.main.temp)} &#176; and feels
-            like {Math.round(data.main.feels_like)} &#176;
-          </h2>
-          <h2>
-            A high of {Math.round(data.main.temp_max)} &#176; and a low of{" "}
-            {Math.round(data.main.temp_min)} &#176; is expected
-          </h2>
-          <h2>
-            Wind speed of {(data.wind.speed * 3.6).toFixed(2)} km/h{" "}
-            {wind.direction[Math.round(data.wind.deg / 22.5)]} currently
-          </h2>
+              <h4 className="datetime">{new Date().toGMTString()} </h4>
+              <h2>
+                The temperature is {Math.round(data.main.temp)} &#176; and feels
+                like {Math.round(data.main.feels_like)} &#176;
+              </h2>
+              <h2>
+                A high of {Math.round(data.main.temp_max)} &#176; and a low of{" "}
+                {Math.round(data.main.temp_min)} &#176; is expected
+              </h2>
+              <h2>
+                Current wind speed of {(data.wind.speed * 3.6).toFixed(2)} km/h{" "}
+                {wind.direction[Math.round(data.wind.deg / 22.5)]}
+              </h2>
+              <h2>
+                {data.clouds.all}% cloud cover over {data.name}
+              </h2>
+            </div>
+            <div>
+              <img
+                className="weatherIcon"
+                src={
+                  "http://openweathermap.org/img/wn/" +
+                  data.weather[0].icon +
+                  "@4x.png"
+                }
+              ></img>
+            </div>
+          </div>
           <div className="home">
             <h2>
               <Link href="/">
@@ -98,15 +109,14 @@ function Weather({ data, wind }) {
 
         .weatherIcon {
           filter: grayscale(0%);
-          width: 0;
+          width: 0px;
         }
 
         .grid {
           display: flex;
           align-items: center;
-          justify-content: center;
+          justify-content: left;
           flex-wrap: wrap;
-          margin-top: 3rem;
         }
 
         .card {
@@ -116,7 +126,7 @@ function Weather({ data, wind }) {
           text-align: left;
           color: inherit;
           text-decoration: none;
-          border: 1px solid #eaeaea;
+          border: 2px solid #eaeaea;
           border-radius: 10px;
           width: 60%;
         }
@@ -163,7 +173,7 @@ function Weather({ data, wind }) {
 }
 
 export async function getServerSideProps(context) {
-  const res_ip= await fetch(`https://ipapi.co/json/`);
+  const res_ip = await fetch(`https://ipapi.co/json/`);
   const ip = await res_ip.json();
   const res = await fetch(
     `http://api.openweathermap.org/data/2.5/weather?q=${ip.city}
@@ -171,7 +181,7 @@ export async function getServerSideProps(context) {
   );
   const data = await res.json();
   const res_wind = await fetch(`http://localhost:3000/api/wind`);
-  const wind = await res_wind.json()
+  const wind = await res_wind.json();
   return { props: { data, wind } };
 }
 

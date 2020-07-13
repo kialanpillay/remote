@@ -1,11 +1,10 @@
 import Link from "next/link";
 import Head from "next/head";
-import getConfig from 'next/config'
+import getConfig from "next/config";
 
-const {serverRuntimeConfig, publicRuntimeConfig} = getConfig()
+const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 function News({ data, ip }) {
-  
   return (
     <div>
       <Head>
@@ -16,9 +15,14 @@ function News({ data, ip }) {
         <h1 className="title">NEWS</h1>
         <div className="card">
           <h1>Top Headlines from {ip.country_name}</h1>
-          {data.articles.slice(0, 12).map((article, id) => {
+          {data.articles.slice(0, 11).map((article, id) => {
             return (
-              <a key={id} href={article.url} target="_blank" rel="noopener noreferrer">
+              <a
+                key={id}
+                href={article.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <p>{article.title}</p>
               </a>
             );
@@ -97,13 +101,11 @@ function News({ data, ip }) {
           padding: 1.5rem;
           text-align: left;
           color: inherit;
-          border: 1px solid #eaeaea;
+          border: 2px solid #eaeaea;
           border-radius: 10px;
           width: 60%;
         }
-
         .home h2 {
-          margin: 0 0 1rem 0;
           font-size: 1.5rem;
           font-weight: 600;
         }
