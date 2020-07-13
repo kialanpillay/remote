@@ -32,8 +32,8 @@ export default function Home() {
             <p>Find the latest statistics about COVID-19.</p>
           </a>
 
-          <a href="/markets" className="card">
-            <h3>Financial Markets &rarr;</h3>
+          <a href="/investing" className="card">
+            <h3>Investing &rarr;</h3>
             <p>View detailed market data from TradingView.</p>
           </a>
 
