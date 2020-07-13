@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Icon from '@material-ui/core/';
+import Icon from '@material-ui/core/Icon';
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className="description">
-          A hub for essential information.
+          A hub for daily essential information.
         </p>
 
         <div className="grid">
@@ -28,7 +28,7 @@ export default function Home() {
 
           <a href="/markets" className="card">
             <h3>Financial Markets &rarr;</h3>
-            <p>View detailed market data from TradingView</p>
+            <p>View detailed market data from TradingView.</p>
           </a>
 
           <a
@@ -36,7 +36,7 @@ export default function Home() {
             className="card"
           >
             <h3>News &rarr;</h3>
-            <p>Discover top headlines from around the world.</p>
+            <p>Discover top headlines from around the country.</p>
           </a>
 
           <a
@@ -63,7 +63,7 @@ export default function Home() {
 
       <style jsx>{`
         .container {
-          min-height: 100vh;
+          max-height: 100vh;
           padding: 0 0.5rem;
           display: flex;
           flex-direction: column;
@@ -88,10 +88,6 @@ export default function Home() {
           display: flex;
           justify-content: center;
           align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
         }
 
         footer a {
