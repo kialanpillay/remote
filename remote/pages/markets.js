@@ -14,11 +14,13 @@ function Markets({ data }) {
         <div className="data">
           <Chart />
         </div>
-        <h2>
+        <div className="home">
+          <h2>
             <Link href="/">
               <a> &larr; Back Home</a>
             </Link>
           </h2>
+        </div>
       </main>
 
       <style jsx>{`
@@ -63,12 +65,22 @@ function Markets({ data }) {
           font-size: 1.5rem;
         }
 
+        .home h2 {
+          margin: 0 0 1rem 0;
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+
+        .home h2:hover {
+          color: #0070f3;
+        }
+
         .data {
-            margin-top: 2rem;
-            flex-basis: 45%;
-            align-items: center;
-            width: 60%;
-          }
+          margin-top: 2rem;
+          flex-basis: 45%;
+          align-items: center;
+          width: 60%;
+        }
 
         @media (max-width: 600px) {
           .grid {
