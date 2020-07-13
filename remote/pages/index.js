@@ -21,7 +21,7 @@ export default function Home() {
         </p>
 
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
+          <a href="/coronavirus" className="card">
             <h3>COVID-19 &rarr;</h3>
             <p>Find the latest statistics about COVID-19.</p>
           </a>
