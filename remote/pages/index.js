@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className="description">
-          A hub for daily essential information, without searching anything.
+          A hub for daily essential information. No searching. No scrolling.
         </p>
 
         <div className="grid">
