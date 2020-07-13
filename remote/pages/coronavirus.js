@@ -2,6 +2,9 @@ import Link from "next/link";
 import Head from "next/head";
 import React from "react";
 import AnimatedNumber from "react-animated-number";
+import CaseLineChart from "../components/CaseLineChart";
+import CaseBarChart from "../components/CaseBarChart";
+
 
 function Difference(data, country) {
   let confirmed =
@@ -72,6 +75,17 @@ function Coronavirus({ data, ip }) {
                 />
               </h1>
               <h2>Deaths (+{difference[2]})</h2>
+            </div>
+          </div>
+          <div className="grid">
+            <div className="graph">
+              <CaseLineChart data={data[ip.country_name]} ma={false} />
+            </div>
+            <div className="graph">
+              <CaseLineChart data={data[ip.country_name]} ma={true} />
+            </div>
+            <div>
+              {/*<CaseBarChart data={data[ip.country_name].slice(-1)[0]} />*/}
             </div>
           </div>
           <div className="home">
@@ -161,6 +175,10 @@ function Coronavirus({ data, ip }) {
           margin: 0;
         }
 
+        .graph {
+          margin: 1rem;
+        }
+
         .home h2 {
           margin: 0 0 1rem 0;
           font-size: 1.5rem;
@@ -168,7 +186,7 @@ function Coronavirus({ data, ip }) {
           text-align: left;
         }
 
-        .home h2:hover .graphs h2:hover {
+        .home h2:hover {
           color: #0070f3;
         }
 
