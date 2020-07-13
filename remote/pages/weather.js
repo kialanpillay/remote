@@ -6,26 +6,8 @@ import getConfig from "next/config";
 const { serverRuntimeConfig } = getConfig();
 console.log(serverRuntimeConfig)
 
-function Weather({ data }) {
-  const wind_direction = [
-    "N",
-    "NNE",
-    "NE",
-    "ENE",
-    "E",
-    "ESE",
-    "SE",
-    "SSE",
-    "S",
-    "SSW",
-    "SW",
-    "WSW",
-    "W",
-    "WNW",
-    "NW",
-    "NNW",
-    "N",
-  ];
+function Weather({ data, wind }) {
+  console.log(wind.direction)
   return (
     <div className="container">
       <Head>
@@ -60,7 +42,7 @@ function Weather({ data }) {
           </h2>
           <h2>
             Wind speed of {(data.wind.speed * 3.6).toFixed(2)} km/h{" "}
-            {wind_direction[Math.round(data.wind.deg / 22.5)]} currently
+            {wind.direction[Math.round(data.wind.deg / 22.5)]} currently
           </h2>
           <div className="home">
             <h2>
@@ -151,10 +133,8 @@ function Weather({ data }) {
           font-weight: 600;
         }
 
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
+        .home h2:hover {
+          color: #0070f3;
         }
 
         @media (max-width: 600px) {
@@ -183,15 +163,16 @@ function Weather({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const rip = await fetch(`https://ipapi.co/json/`);
-  const ip = await rip.json();
+  const res_ip= await fetch(`https://ipapi.co/json/`);
+  const ip = await res_ip.json();
   const res = await fetch(
     `http://api.openweathermap.org/data/2.5/weather?q=${ip.city}
       &appid=8941e9cb367f4bb6e1a7311f3ed46c88&units=metric`
   );
   const data = await res.json();
-  //const w = await fetch(`https://localhost:3000/api/wind/`);
-  return { props: { data } };
+  const res_wind = await fetch(`http://localhost:3000/api/wind`);
+  const wind = await res_wind.json()
+  return { props: { data, wind } };
 }
 
 export default Weather;
