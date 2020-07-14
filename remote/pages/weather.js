@@ -177,17 +177,17 @@ export async function getServerSideProps(context) {
   const ip = await rip.json();
   let res = await fetch(
     `http://api.openweathermap.org/data/2.5/weather?q=${ip.city}
-      &appid=8941e9cb367f4bb6e1a7311f3ed46c88&units=metric`
+      &appid=${process.env.OWM_KEY}&units=metric`
   );
   let data = await res.json();
   if(data.cod == '404'){
     res = await fetch(
-      `http://localhost:3000/api/weather?province=${ip.region}`
+      `http://${process.env.VERCEL_URL}/api/weather?province=${ip.region}`
     );
     const location = await res.json();
     res = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${location.city}
-        &appid=8941e9cb367f4bb6e1a7311f3ed46c88&units=metric`
+        &appid=${process.env.OWM_KEY}&units=metric`
     );
     data  = await res.json();
   }

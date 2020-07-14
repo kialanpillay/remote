@@ -217,7 +217,7 @@ function Coronavirus({ data, ip }) {
 export async function getServerSideProps(context) {
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
-  const res = await fetch(`http://localhost:3000/api/coronavirus`);
+  const res = await fetch(`http://${process.env.VERCEL_URL}/api/coronavirus`);
   const data = await res.json();
   return { props: { data, ip } };
 }

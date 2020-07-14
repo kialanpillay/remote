@@ -143,8 +143,9 @@ function News({ data, ip }) {
 export async function getServerSideProps(context) {
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
+  console.log(process.env.NEWS_KEY)
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=${ip.country_code.toLowerCase()}&apiKey=e3c7d810af0e41dd869013ab5c5d66e9`
+    `https://newsapi.org/v2/top-headlines?country=${ip.country_code.toLowerCase()}&apiKey=${process.env.NEWS_KEY}`
   );
   const data = await res.json();
   return { props: { data, ip } };
