@@ -33,8 +33,8 @@ export default class CaseLineChart extends React.PureComponent {
     console.log(data)
 
     return (
-      <LineChart width={250} height={220} data={data}>
-        <YAxis hide={!this.props.average} tickLine={false} />
+      <LineChart width={250} height={200} data={data}>
+        <YAxis hide={!this.props.average} tickLine={false} domain={['auto', 'auto']}/>
         <XAxis hide={true} dataKey="name" />
         <Tooltip />
         <Line
