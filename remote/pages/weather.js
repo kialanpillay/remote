@@ -173,15 +173,26 @@ function Weather({ data, wind }) {
 }
 
 export async function getServerSideProps(context) {
-  const res_ip = await fetch(`https://ipapi.co/json/`);
-  const ip = await res_ip.json();
-  const res = await fetch(
+  const rip = await fetch(`https://ipapi.co/json/`);
+  const ip = await rip.json();
+  let res = await fetch(
     `http://api.openweathermap.org/data/2.5/weather?q=${ip.city}
       &appid=8941e9cb367f4bb6e1a7311f3ed46c88&units=metric`
   );
-  const data = await res.json();
-  const res_wind = await fetch(`http://localhost:3000/api/wind`);
-  const wind = await res_wind.json();
+  let data = await res.json();
+  if(data.cod == '404'){
+    res = await fetch(
+      `http://localhost:3000/api/weather?province=${ip.region}`
+    );
+    const region = await res.json();
+    res = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=${region.city}
+        &appid=8941e9cb367f4bb6e1a7311f3ed46c88&units=metric`
+    );
+    data  = await res.json();
+  }
+  res = await fetch(`http://localhost:3000/api/wind`);
+  const wind = await res.json();
   return { props: { data, wind } };
 }
 
