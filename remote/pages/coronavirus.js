@@ -17,7 +17,7 @@ function Difference(data, country) {
 
 function Coronavirus({ data, ip }) {
   let country = ip.country_name
-  if(country.country_name =="United States"){
+  if(ip.country_name =="United States"){
     country = "US"
   }
   const difference = Difference(data, country);
