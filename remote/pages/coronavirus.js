@@ -217,7 +217,9 @@ function Coronavirus({ data, ip }) {
 export async function getServerSideProps(context) {
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
-  const res = await fetch(`${process.env.URL}api/coronavirus`);
+  //const res = await fetch(`${process.env.URL}api/coronavirus`);
+  //const data = await res.json();
+  const res = await fetch(`https://pomber.github.io/covid19/timeseries.json`)
   const data = await res.json();
   return { props: { data, ip } };
 }
