@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Head from "next/head";
-import Icon from "@material-ui/core/Icon";
-import getConfig from "next/config";
 
 function Weather({ data, wind }) {
   return (

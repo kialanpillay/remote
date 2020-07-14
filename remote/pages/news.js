@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Head from "next/head";
-import getConfig from "next/config";
 
 function News({ data, ip }) {
   return (

@@ -71,7 +71,6 @@ function Investing() {
         }
 
         .data {
-          margin-top: 2rem;
           flex-basis: 45%;
           align-items: center;
           width: 60%;
