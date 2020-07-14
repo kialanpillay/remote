@@ -20,12 +20,8 @@ let major_cities = {
   }
 
 export default (req, res) => {
-  let url = require("url");
-  let url_parts = url.parse(req.url, true);
-  let query = url_parts.query;
-  let city = major_cities[query.province]
+  const city = major_cities[req.query.province]
   res.statusCode = 200;
-  console.log(city)
   res.setHeader("Content-Type", "application/json");
   res.end(
     JSON.stringify({
