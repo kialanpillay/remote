@@ -7,7 +7,6 @@ const { serverRuntimeConfig } = getConfig();
 console.log(serverRuntimeConfig);
 
 function Weather({ data, wind }) {
-  console.log(wind.direction);
   return (
     <div className="container">
       <Head>

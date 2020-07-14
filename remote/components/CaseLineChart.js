@@ -30,7 +30,6 @@ export default class CaseLineChart extends React.PureComponent {
       }
       data = data.splice(data.length - 7, data.length - 7)
     }
-    console.log(data)
 
     return (
       <LineChart width={250} height={200} data={data}>

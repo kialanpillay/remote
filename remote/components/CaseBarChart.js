@@ -9,7 +9,6 @@ export default class Example extends React.PureComponent {
         recovered: this.props.data.recovered,
       },
     ];
-    console.log(data);
     return (
       <BarChart width={180} height={220} data={data}>
         <Bar
