@@ -4,7 +4,7 @@ import Icon from "@material-ui/core/Icon";
 import getConfig from "next/config";
 
 const { serverRuntimeConfig } = getConfig();
-console.log(serverRuntimeConfig);
+
 
 function Weather({ data, wind }) {
   return (
