@@ -3,9 +3,6 @@ import Head from "next/head";
 import Icon from "@material-ui/core/Icon";
 import getConfig from "next/config";
 
-const { serverRuntimeConfig } = getConfig();
-
-
 function Weather({ data, wind }) {
   return (
     <div className="container">

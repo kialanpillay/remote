@@ -2,8 +2,6 @@ import Link from "next/link";
 import Head from "next/head";
 import getConfig from "next/config";
 
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
-
 function News({ data, ip }) {
   return (
     <div>
@@ -143,7 +141,6 @@ function News({ data, ip }) {
 export async function getServerSideProps(context) {
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
-  console.log(process.env.NEWS_KEY)
   const res = await fetch(
     `https://newsapi.org/v2/top-headlines?country=${ip.country_code.toLowerCase()}&apiKey=${process.env.NEWS_KEY}`
   );
