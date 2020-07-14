@@ -26,7 +26,7 @@ function Weather({ data, wind }) {
                 {data.name.toUpperCase()} - <i>{data.weather[0].description}</i>
               </h1>
 
-              <h4 className="datetime">{new Date().toGMTString()} </h4>
+              <h4 className="datetime">{new Date().toLocaleString()} </h4>
               <h2>
                 The temperature is {Math.round(data.main.temp)} &#176; and feels
                 like {Math.round(data.main.feels_like)} &#176;
