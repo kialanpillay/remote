@@ -16,7 +16,11 @@ function Difference(data, country) {
 }
 
 function Coronavirus({ data, ip }) {
-  const difference = Difference(data, ip.country_name);
+  let country = ip.country_name
+  if(country.country_name =="United States"){
+    country = "US"
+  }
+  const difference = Difference(data, country);
   return (
     <div className="container">
       <Head>
@@ -34,7 +38,7 @@ function Coronavirus({ data, ip }) {
               <h1 style={{ color: "orange" }}>
                 <AnimatedNumber
                   component="text"
-                  value={data[ip.country_name].slice(-1)[0].confirmed}
+                  value={data[country].slice(-1)[0].confirmed}
                   style={{
                     transition: "0.8s ease-out",
                     transitionProperty: "background-color, color, opacity",
@@ -49,7 +53,7 @@ function Coronavirus({ data, ip }) {
               <h1 style={{ color: "green" }}>
                 <AnimatedNumber
                   component="text"
-                  value={data[ip.country_name].slice(-1)[0].recovered}
+                  value={data[country].slice(-1)[0].recovered}
                   style={{
                     transition: "0.8s ease-out",
                     transitionProperty: "background-color, color, opacity",
@@ -64,7 +68,7 @@ function Coronavirus({ data, ip }) {
               <h1 style={{ color: "maroon" }}>
                 <AnimatedNumber
                   component="text"
-                  value={data[ip.country_name].slice(-1)[0].deaths}
+                  value={data[country].slice(-1)[0].deaths}
                   style={{
                     transition: "0.8s ease-out",
                     transitionProperty: "background-color, color, opacity",
@@ -78,13 +82,13 @@ function Coronavirus({ data, ip }) {
           </div>
           <div className="grid">
             <div className="graph">
-              <CaseLineChart data={data[ip.country_name]} average={false} />
+              <CaseLineChart data={data[country]} average={false} />
             </div>
             <div className="graph">
-              <CaseLineChart data={data[ip.country_name]} average={true} />
+              <CaseLineChart data={data[country]} average={true} />
             </div>
             <div className="graph">
-              <CaseBarChart data={data[ip.country_name].slice(-1)[0]} />
+              <CaseBarChart data={data[country].slice(-1)[0]} />
             </div>
           </div>
           <div className="home">
