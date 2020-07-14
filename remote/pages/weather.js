@@ -184,9 +184,9 @@ export async function getServerSideProps(context) {
     res = await fetch(
       `http://localhost:3000/api/weather?province=${ip.region}`
     );
-    const region = await res.json();
+    const location = await res.json();
     res = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${region.city}
+      `http://api.openweathermap.org/data/2.5/weather?q=${location.city}
         &appid=8941e9cb367f4bb6e1a7311f3ed46c88&units=metric`
     );
     data  = await res.json();
