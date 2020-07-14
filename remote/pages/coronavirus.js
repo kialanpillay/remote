@@ -5,7 +5,6 @@ import AnimatedNumber from "react-animated-number";
 import CaseLineChart from "../components/CaseLineChart";
 import CaseBarChart from "../components/CaseBarChart";
 
-
 function Difference(data, country) {
   let confirmed =
     data[country].slice(-1)[0].confirmed - data[country].slice(-2)[0].confirmed;
@@ -79,13 +78,13 @@ function Coronavirus({ data, ip }) {
           </div>
           <div className="grid">
             <div className="graph">
-              <CaseLineChart data={data[ip.country_name]} ma={false} />
+              <CaseLineChart data={data[ip.country_name]} average={false} />
             </div>
             <div className="graph">
-              <CaseLineChart data={data[ip.country_name]} ma={true} />
+              <CaseLineChart data={data[ip.country_name]} average={true} />
             </div>
-            <div>
-              {/*<CaseBarChart data={data[ip.country_name].slice(-1)[0]} />*/}
+            <div className="graph">
+              <CaseBarChart data={data[ip.country_name].slice(-1)[0]} />
             </div>
           </div>
           <div className="home">

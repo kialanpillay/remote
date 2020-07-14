@@ -13,7 +13,7 @@ export default class CaseLineChart extends React.PureComponent {
   render() {
     let data = this.props.data.map((data, idx) => {
       return {
-        name: idx,
+        name: data.date,
         confirmed: data.confirmed,
         recovered: data.recovered,
         deaths: data.deaths,
@@ -21,7 +21,7 @@ export default class CaseLineChart extends React.PureComponent {
       };
     });
 
-    if(this.props.ma == true){
+    if(this.props.average == true){
       for (var i = data.length - 1; i >= data.length - 7; i--) {
         data[i].confirmed = data[i].confirmed - data[i-1].confirmed;
         data[i].recovered = data[i].recovered - data[i-1].recovered
@@ -30,10 +30,13 @@ export default class CaseLineChart extends React.PureComponent {
       }
       data = data.splice(data.length - 7, data.length - 7)
     }
+    console.log(data)
 
     return (
-      <LineChart width={250} height={200} data={data}>
-        <YAxis/>
+      <LineChart width={250} height={220} data={data}>
+        <YAxis hide={!this.props.average} tickLine={false} />
+        <XAxis hide={true} dataKey="name" />
+        <Tooltip />
         <Line
           type="monotone"
           dataKey="confirmed"
@@ -50,18 +53,19 @@ export default class CaseLineChart extends React.PureComponent {
         />
         <Line
           type="monotone"
-          dataKey="deaths"
-          stroke="maroon"
-          strokeWidth={this.props.ma ? 0 : 3}
+          dataKey="active"
+          stroke="silver"
+          strokeWidth={!this.props.average ? 0 : 3}
           dot={false}
         />
         <Line
           type="monotone"
-          dataKey="active"
-          stroke="silver"
-          strokeWidth={this.props.ma ? 3 : 0}
+          dataKey="deaths"
+          stroke="maroon"
+          strokeWidth={this.props.average ? 0 : 3}
           dot={false}
         />
+        
       </LineChart>
     );
   }
