@@ -61,12 +61,7 @@ function News({ data, ip }) {
           color: inherit;
           text-decoration: underline;
         }
-
-        .home a:hover {
-          color: inherit;
-          text-decoration: none;
-        }
-
+        
         .title {
           margin-top: 3rem;
           line-height: 1.15;
@@ -107,8 +102,9 @@ function News({ data, ip }) {
           font-weight: 600;
         }
 
-        .home h2:hover {
+        .home a:hover {
           color: #0070f3;
+          text-decoration: none;
         }
 
         @media (max-width: 600px) {
