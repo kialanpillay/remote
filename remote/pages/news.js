@@ -141,8 +141,8 @@ function News({ data, ip }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
-  const res_ip = await fetch(`https://ipapi.co/json/`);
-  const ip = await res_ip.json();
+  const rip = await fetch(`https://ipapi.co/json/`);
+  const ip = await rip.json();
   const res = await fetch(
     `https://newsapi.org/v2/top-headlines?country=${ip.country_code.toLowerCase()}&apiKey=e3c7d810af0e41dd869013ab5c5d66e9`
   );
