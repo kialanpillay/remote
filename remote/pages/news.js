@@ -9,7 +9,7 @@ function News({ data, ip }) {
     <div>
       <Head>
         <title>Remote - News</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
         <h1 className="title">NEWS</h1>

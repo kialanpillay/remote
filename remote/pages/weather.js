@@ -12,7 +12,7 @@ function Weather({ data, wind }) {
     <div className="container">
       <Head>
         <title>Remote - Weather</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"

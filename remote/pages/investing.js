@@ -7,7 +7,7 @@ function Investing() {
     <div className="container">
       <Head>
         <title>Remote - Investing</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
         <h1 className="title">INVESTING</h1>

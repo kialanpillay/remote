@@ -7,7 +7,7 @@ export default function Home() {
     <div className="container">
       <Head>
         <title>Remote</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -17,8 +17,8 @@ export default function Home() {
       <main>
         <h1 className="title">
           Welcome to Remote{" "}
-          <Icon style={{ fontSize: 64, color: "#0070f3" }}>
-            settings_remote
+          <Icon style={{ fontSize: 48, color: "#0070f3" }}>
+            games
           </Icon>
         </h1>
 

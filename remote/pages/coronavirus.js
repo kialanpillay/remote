@@ -21,7 +21,7 @@ function Coronavirus({ data, ip }) {
     <div className="container">
       <Head>
         <title>Remote - Coronavirus</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main>
         <h1 className="title">COVID-19</h1>
