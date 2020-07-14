@@ -188,7 +188,7 @@ export async function getServerSideProps(context) {
     );
     data  = await res.json();
   }
-  res = await fetch(`http://localhost:3000/api/wind`);
+  res = await fetch(`${process.env.URL}api/wind`);
   const wind = await res.json();
   return { props: { data, wind } };
 }
