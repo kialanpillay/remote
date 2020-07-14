@@ -182,7 +182,7 @@ export async function getServerSideProps(context) {
   let data = await res.json();
   if(data.cod == '404'){
     res = await fetch(
-      `http://${process.env.URL}/api/weather?province=${ip.region}`
+      `${process.env.URL}api/weather?province=${ip.region}`
     );
     const location = await res.json();
     res = await fetch(
