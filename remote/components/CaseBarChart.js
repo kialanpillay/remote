@@ -18,9 +18,9 @@ export default class Example extends React.PureComponent {
           dataKey="recovered"
           fill="green"
           label={{
-            fill: "gray",
+            fill: "white",
             fontSize: 16,
-            position: "top",
+            position: "middle",
             fontWeight: 400,
           }}
         />
@@ -28,9 +28,9 @@ export default class Example extends React.PureComponent {
           dataKey="active"
           fill="silver"
           label={{
-            fill: "gray",
+            fill: "white",
             fontSize: 16,
-            position: "top",
+            position: "middle",
             fontWeight: 400,
           }}
         />
