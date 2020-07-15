@@ -185,6 +185,9 @@ export async function getServerSideProps(context) {
     `${api}onecall?lat=${ip.latitude}&lon=${ip.longitude}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
   );
   let forecast = await res.json();
+  if(forecast.cod == "404"){
+    forecast = {daily:[]}
+  }
   res = await fetch(`${process.env.URL}api/wind`);
   const wind = await res.json();
   return { props: { data, wind, forecast, ip } };
