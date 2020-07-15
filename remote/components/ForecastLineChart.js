@@ -28,7 +28,6 @@ export default class CaseLineChart extends React.PureComponent {
         };
       });
     }
-    console.log(data);
 
     return (
       <LineChart width={180} height={150} data={data}>

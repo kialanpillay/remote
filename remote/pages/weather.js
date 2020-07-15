@@ -4,6 +4,8 @@ import Icon from "@material-ui/core/Icon";
 import ForecastLineChart from "../components/ForecastLineChart"
 
 function Weather({ data, wind, forecast, ip }) {
+  console.log(data)
+  console.log(forecast)
   return (
     <div className="container">
       <Head>
