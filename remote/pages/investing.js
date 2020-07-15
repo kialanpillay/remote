@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
-import Chart from "../components/Chart";
+import MarketOverviewChart from "../components/MarketOverviewChart";
+import EconomicCalendar from "../components/EconomicCalendar";
 
 function Investing() {
   return (
@@ -11,8 +12,9 @@ function Investing() {
       </Head>
       <main>
         <h1 className="title">INVESTING</h1>
-        <div className="data">
-          <Chart />
+        <div className="grid">
+          <MarketOverviewChart />
+          <EconomicCalendar />
         </div>
         <div className="home">
           <h2>
@@ -59,7 +61,14 @@ function Investing() {
         .description {
           text-align: center;
         }
-        
+
+        .grid {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
         .home h2 {
           margin: 0 0 1rem 0;
           font-size: 1.5rem;
@@ -68,12 +77,6 @@ function Investing() {
 
         .home h2:hover {
           color: #0070f3;
-        }
-
-        .data {
-          flex-basis: 45%;
-          align-items: center;
-          width: 60%;
         }
 
         @media (max-width: 600px) {
