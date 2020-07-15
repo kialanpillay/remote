@@ -4,8 +4,6 @@ import Icon from "@material-ui/core/Icon";
 import ForecastLineChart from "../components/ForecastLineChart"
 
 function Weather({ data, wind, forecast, ip }) {
-  console.log(data)
-  console.log(forecast)
   return (
     <div className="container">
       <Head>
@@ -47,10 +45,10 @@ function Weather({ data, wind, forecast, ip }) {
               </h2>
             </div>
             <div>
-              <ForecastLineChart data={forecast.daily} type={"temp"}/>
+              {forecast != null ? <ForecastLineChart data={forecast.daily} type={"temp"}/> : null}
             </div>
             <div>
-              <ForecastLineChart data={forecast.daily} type={"rain"}/>
+              {forecast != null ? <ForecastLineChart data={forecast.daily} type={"elements"}/> : null}
             </div>
           </div>
           <div className="home">
@@ -184,11 +182,11 @@ export async function getServerSideProps(context) {
     data = await res.json();
   }
   res = await fetch(
-    `${api}onecall?lat=${ip.latitude}&lon=${ip.longitude}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
+    `${api}onecall?lat=${ip.latitude}&lon=${ip.longitu}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
   );
   let forecast = await res.json();
-  if(forecast.cod == "404"){
-    forecast = {"daily":[]}
+  if(forecast.cod == "400" || forecast.cod == "404"){
+    forecast = null
   }
   res = await fetch(`${process.env.URL}api/wind`);
   const wind = await res.json();
