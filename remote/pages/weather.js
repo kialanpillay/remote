@@ -35,7 +35,7 @@ function Weather({ data, wind }) {
                 {wind.direction[Math.round(data.wind.deg / 22.5)]}
               </h2>
               <h2>
-                {data.clouds.all}% cloud cover over {data.name}
+                {data.clouds.all > 0 ? data.clouds.all + "%" : "No"} cloud cover over {data.name}
               </h2>
             </div>
             <div>

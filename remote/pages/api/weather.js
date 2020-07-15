@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-let major_cities = {
+const major_cities = {
     "Western Cape": "Cape Town",
  
     "Nothern Cape": "Kimberly",

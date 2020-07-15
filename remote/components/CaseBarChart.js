@@ -20,7 +20,7 @@ export default class Example extends React.PureComponent {
           label={{
             fill: "white",
             fontSize: 16,
-            position: "middle",
+            position: "center",
             fontWeight: 400,
           }}
         />
@@ -30,7 +30,7 @@ export default class Example extends React.PureComponent {
           label={{
             fill: "white",
             fontSize: 16,
-            position: "middle",
+            position: "center",
             fontWeight: 400,
           }}
         />
