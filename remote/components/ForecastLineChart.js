@@ -6,7 +6,7 @@ Date.prototype.addDays = function (date, days) {
   return this;
 };
 
-export default class CaseLineChart extends React.PureComponent {
+export default class ForecastLineChart extends React.PureComponent {
   render() {
     let data;
     let current_date = new Date();
