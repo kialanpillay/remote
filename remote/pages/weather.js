@@ -186,7 +186,7 @@ export async function getServerSideProps(context) {
   );
   let forecast = await res.json();
   if(forecast.cod == "404"){
-    forecast = {daily:[]}
+    forecast = {"daily":[]}
   }
   res = await fetch(`${process.env.URL}api/wind`);
   const wind = await res.json();
