@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Head from "next/head";
 import Icon from "@material-ui/core/Icon";
+import ForecastLineChart from "../components/ForecastLineChart"
 
-function Weather({ data, wind }) {
+function Weather({ data, wind, forecast, ip }) {
   return (
     <div className="container">
       <Head>
@@ -14,14 +15,15 @@ function Weather({ data, wind }) {
         />
       </Head>
       <main>
-      <h1 className="title">
-          WEATHER<Icon style={{ fontSize: 50, color: "#0070f3" }}>my_location</Icon>
+        <h1 className="title">
+          WEATHER
+          <Icon style={{ fontSize: 50, color: "#0070f3" }}>my_location</Icon>
         </h1>
         <div className="card">
           <div className="grid">
             <div>
               <h1>
-                {data.name.toUpperCase()} - <i>{data.weather[0].description}</i>
+                {ip.city.toUpperCase()} - <i>{data.weather[0].description}</i>
               </h1>
 
               <h4 className="datetime">{new Date().toLocaleString()} </h4>
@@ -38,18 +40,15 @@ function Weather({ data, wind }) {
                 {wind.direction[Math.round(data.wind.deg / 22.5)]}
               </h2>
               <h2>
-                {data.clouds.all > 0 ? data.clouds.all + "%" : "No"} cloud cover over {data.name}
+                {data.clouds.all > 0 ? data.clouds.all + "%" : "No"} cloud cover
+                over {ip.city}
               </h2>
             </div>
             <div>
-              <img
-                className="weatherIcon"
-                src={
-                  "http://openweathermap.org/img/wn/" +
-                  data.weather[0].icon +
-                  "@4x.png"
-                }
-              ></img>
+              <ForecastLineChart data={forecast.daily} type={"temp"}/>
+            </div>
+            <div>
+              <ForecastLineChart data={forecast.daily} type={"rain"}/>
             </div>
           </div>
           <div className="home">
@@ -102,11 +101,6 @@ function Weather({ data, wind }) {
         .description {
           line-height: 1.5;
           font-size: 1.5rem;
-        }
-
-        .weatherIcon {
-          filter: grayscale(0%);
-          width: 0px;
         }
 
         .grid {
@@ -171,27 +165,29 @@ function Weather({ data, wind }) {
 }
 
 export async function getServerSideProps(context) {
+  const api = "http://api.openweathermap.org/data/2.5/"
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
   let res = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${ip.city}
-      &appid=${process.env.OWM_KEY}&units=metric`
+    `${api}weather?lat=${ip.latitude}&lon=${ip.longitude}&appid=${process.env.OWM_KEY}&units=metric`
   );
   let data = await res.json();
-  if(data.cod == '404'){
-    res = await fetch(
-      `${process.env.URL}api/weather?province=${ip.region}`
-    );
+  if (data.cod == "404") {
+    res = await fetch(`${process.env.URL}api/weather?province=${ip.region}`);
     const location = await res.json();
     res = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${location.city}
+      `${api}weather?q=${location.city}
         &appid=${process.env.OWM_KEY}&units=metric`
     );
-    data  = await res.json();
+    data = await res.json();
   }
+  res = await fetch(
+    `${api}onecall?lat=${ip.latitude}&lon=${ip.longitude}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
+  );
+  let forecast = await res.json();
   res = await fetch(`${process.env.URL}api/wind`);
   const wind = await res.json();
-  return { props: { data, wind } };
+  return { props: { data, wind, forecast, ip } };
 }
 
 export default Weather;
