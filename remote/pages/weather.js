@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
+import Icon from "@material-ui/core/Icon";
 
 function Weather({ data, wind }) {
   return (
@@ -13,7 +14,9 @@ function Weather({ data, wind }) {
         />
       </Head>
       <main>
-        <h1 className="title">WEATHER</h1>
+      <h1 className="title">
+          WEATHER<Icon style={{ fontSize: 50, color: "#0070f3" }}>my_location</Icon>
+        </h1>
         <div className="card">
           <div className="grid">
             <div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
+import Icon from "@material-ui/core/Icon";
 
 function News({ data, ip }) {
   return (
@@ -7,9 +8,15 @@ function News({ data, ip }) {
       <Head>
         <title>Remote - News</title>
         <link rel="icon" href="/favicon.png" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
       </Head>
       <main>
-        <h1 className="title">NEWS</h1>
+        <h1 className="title">
+          NEWS<Icon style={{ fontSize: 54, color: "#0070f3" }}>rss_feed</Icon>
+        </h1>
         <div className="card">
           <h1>Top Headlines from {ip.country_name}</h1>
           {data.articles.slice(0, 11).map((article, id) => {
@@ -61,7 +68,7 @@ function News({ data, ip }) {
           color: inherit;
           text-decoration: underline;
         }
-        
+
         .title {
           margin-top: 3rem;
           line-height: 1.15;
@@ -137,7 +144,9 @@ export async function getServerSideProps(context) {
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=${ip.country_code.toLowerCase()}&apiKey=${process.env.NEWS_KEY}`
+    `https://newsapi.org/v2/top-headlines?country=${ip.country_code.toLowerCase()}&apiKey=${
+      process.env.NEWS_KEY
+    }`
   );
   const data = await res.json();
   return { props: { data, ip } };

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import React from "react";
+import Icon from "@material-ui/core/Icon";
 import AnimatedNumber from "react-animated-number";
 import CaseLineChart from "../components/CaseLineChart";
 import CaseBarChart from "../components/CaseBarChart";
@@ -26,9 +27,15 @@ function Coronavirus({ data, ip }) {
       <Head>
         <title>Remote - Coronavirus</title>
         <link rel="icon" href="/favicon.png" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
       </Head>
       <main>
-        <h1 className="title">COVID-19</h1>
+      <h1 className="title">
+          COVID-19<Icon style={{ fontSize: 60, color: "#282c34" }}>masks</Icon>
+        </h1>
         <div className="card">
           <h1>
             {ip.country_name.toUpperCase()} | {ip.country_code}

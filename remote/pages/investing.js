@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
+import Icon from "@material-ui/core/Icon";
 import MarketOverviewChart from "../components/MarketOverviewChart";
 import EconomicCalendar from "../components/EconomicCalendar";
 
@@ -9,9 +10,15 @@ function Investing() {
       <Head>
         <title>Remote - Investing</title>
         <link rel="icon" href="/favicon.png" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
       </Head>
       <main>
-        <h1 className="title">INVESTING</h1>
+      <h1 className="title">
+          INVESTING<Icon style={{ fontSize: 54, color: "#0070f3" }}>poll</Icon>
+        </h1>
         <div className="grid">
           <MarketOverviewChart />
           <EconomicCalendar />
