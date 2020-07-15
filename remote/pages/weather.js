@@ -182,7 +182,7 @@ export async function getServerSideProps(context) {
     data = await res.json();
   }
   res = await fetch(
-    `${api}onecall?lat=${ip.latitude}&lon=${ip.longitu}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
+    `${api}onecall?lat=${ip.latitude}&lon=${ip.longitude}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
   );
   let forecast = await res.json();
   if(forecast.cod == "400" || forecast.cod == "404"){
