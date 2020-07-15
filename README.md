@@ -24,4 +24,10 @@ according to your location and delivered to the client for rendering in your bro
 ## Run
 To run Remote locally, clone this repository and then run the following commands after navigating to the target directory:
 1. ```cd remote```
-2. ```npx run dev```
+2. ```npm install```
+3. ```npm run dev```
+
+
+## UCT DevSoc Competition Notes
+Alternatively, visit a US-hosted production build of [Remote](https://remote-mu.vercel.app/). The Vercel (hosting service) servers are in the United States, so don't be surprised when you see US specific data! 
+It's a great way to see how Remote adapts instantly to your location.
