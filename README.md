@@ -16,9 +16,9 @@ Currently Remote supports four major categories of information:
 * Current weather conditions and hourly forecast
 * Top headlines from an array of local and international news outlets
 
-All this data is presented real-time, and pre-rendered delivered from the server on a user request, with no computation on the client. 
+All this data is presented real-time, and pre-rendered and delivered from the server on a user request, with no computation on the client. 
 Furthermore, Remote is designed with a contactless approach at its core; a user is only one-click away from up-to-date information.\
-Minimal interaction with the web application is required; data is automatically fetched by the server 
+Minimal interaction with the web application is required; relevant data is automatically fetched by the server 
 according to your location and delivered to the client for rendering in your browser in a single page.
 
 ## Run
