@@ -31,3 +31,4 @@ To run Remote locally, clone this repository and then run the following commands
 ## UCT DevSoc Competition Notes
 Alternatively, visit a US-hosted production build of [Remote](https://remote-mu.vercel.app/). The Vercel (hosting service) servers are in the United States, so don't be surprised when you see US specific data! 
 It's a great way to see how Remote adapts instantly to your location.
+Easter Egg: Click on the mask icon on the COVID-19 page for a small surprise!
