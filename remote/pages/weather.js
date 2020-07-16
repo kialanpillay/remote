@@ -173,7 +173,7 @@ export async function getServerSideProps(context) {
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
   let res = await fetch(
-    `${api}weather?lat=${ip.latitude}&lon=${ip.longitude}&appid=${process.env.OWM_KEY}&units=metric`
+    `${api}weather?lat=${-29.8317}&lon=${30.9303}&appid=${process.env.OWM_KEY}&units=metric`
   );
   let data = await res.json();
   if (data.cod == "400" || data.cod == "404") {
@@ -186,7 +186,7 @@ export async function getServerSideProps(context) {
     data = await res.json();
   }
   res = await fetch(
-    `${api}onecall?lat=${ip.latitude}&lon=${ip.longitude}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
+    `${api}onecall?lat=${-29.8317}&lon=${30.9303}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
   );
   let forecast = await res.json();
   if (forecast.cod == "400" || forecast.cod == "404") {
