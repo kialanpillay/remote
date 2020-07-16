@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
-import React from "react";
+import React, { useState } from "react";
 import Icon from "@material-ui/core/Icon";
 import AnimatedNumber from "react-animated-number";
 import CaseLineChart from "../components/CaseLineChart";
@@ -17,13 +17,14 @@ function Difference(data, country) {
 }
 
 function Coronavirus({ data, ip }) {
-  let country = ip.country_name
-  if(ip.country_name =="United States"){
-    country = "US"
+  let country = ip.country_name;
+  if (ip.country_name == "United States") {
+    country = "US";
   }
+  const [mode, setMode] = useState(false);
   const difference = Difference(data, country);
   return (
-    <div className="container">
+    <div className={mode ? "container_panic" : "container"}>
       <Head>
         <title>Remote - Coronavirus</title>
         <link rel="icon" href="/favicon.png" />
@@ -33,8 +34,14 @@ function Coronavirus({ data, ip }) {
         />
       </Head>
       <main>
-      <h1 className="title">
-          COVID-19<Icon style={{ fontSize: 60, color: "#282c34" }}>masks</Icon>
+        <h1 className="title">
+          {mode ? "STAY HOME. WEAR A MASK." : "COVID-19"}
+          <Icon
+            style={{ fontSize: 60, color: mode ? "red" : "#282c34" }}
+            onClick={() => setMode(!mode)}
+          >
+            masks
+          </Icon>
         </h1>
         <div className="card">
           <h1>
@@ -42,7 +49,7 @@ function Coronavirus({ data, ip }) {
           </h1>
           <div className="grid">
             <div className="data">
-              <h1 style={{ color: "orange" }}>
+              <h1 style={{ color: mode ? "red" : "orange" }}>
                 <AnimatedNumber
                   component="text"
                   value={data[country].slice(-1)[0].confirmed}
@@ -57,7 +64,7 @@ function Coronavirus({ data, ip }) {
               <h2>Confirmed (+{difference[0]})</h2>
             </div>
             <div className="data">
-              <h1 style={{ color: "green" }}>
+              <h1 style={{ color: mode ? "red" : "green" }}>
                 <AnimatedNumber
                   component="text"
                   value={data[country].slice(-1)[0].recovered}
@@ -72,7 +79,7 @@ function Coronavirus({ data, ip }) {
               <h2>Recovered (+{difference[1]})</h2>
             </div>
             <div className="data">
-              <h1 style={{ color: "maroon" }}>
+              <h1 style={{ color: mode ? "red" : "maroon" }}>
                 <AnimatedNumber
                   component="text"
                   value={data[country].slice(-1)[0].deaths}
@@ -106,6 +113,9 @@ function Coronavirus({ data, ip }) {
             </h2>
           </div>
         </div>
+        <h1 className="quote">
+          {mode ? "We are facing a human crisis unlike any we have experienced" : ""}
+        </h1>
       </main>
 
       <style jsx>{`
@@ -116,6 +126,24 @@ function Coronavirus({ data, ip }) {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          background-color: white;
+          color: black;
+        }
+
+        .container_panic {
+          max-height: 100vh;
+          padding: 0 0.5rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-color: black;
+          color: red;
+        }
+
+        .quote {
+          font-weight: 300;
+          color: #282c34;
         }
 
         main {
@@ -126,6 +154,8 @@ function Coronavirus({ data, ip }) {
           justify-content: center;
           align-items: center;
           width: 100%;
+          background-color: inherit;
+          color: inherit;
         }
 
         a {
@@ -155,6 +185,8 @@ function Coronavirus({ data, ip }) {
           align-items: center;
           justify-content: center;
           flex-wrap: wrap;
+          background-color: inherit;
+          color: inherit;
         }
 
         .card {
@@ -167,6 +199,8 @@ function Coronavirus({ data, ip }) {
           border: 2px solid #eaeaea;
           border-radius: 10px;
           width: 60%;
+          background-color: inherit;
+          color: inherit;
         }
 
         .data {
@@ -177,12 +211,14 @@ function Coronavirus({ data, ip }) {
         .data h1 {
           font-size: 3rem;
           margin: 0;
+          color: inherit;
         }
 
         .data h2 {
           font-size: 1.5rem;
           font-weight: 300;
           margin: 0;
+          color: inherit;
         }
 
         .graph {
