@@ -3,7 +3,7 @@ import Head from "next/head";
 import Icon from "@material-ui/core/Icon";
 import ForecastLineChart from "../components/ForecastLineChart";
 
-function Weather({ data, wind, forecast, ip }) {
+function Weather({ data, wind, forecast }) {
   return (
     <div className="container">
       <Head>
@@ -23,7 +23,7 @@ function Weather({ data, wind, forecast, ip }) {
           <div className="grid">
             <div>
               <h1>
-                {ip.city.toUpperCase()} - <i>{data.weather[0].description}</i>
+                {data.name.toUpperCase()} - <i>{data.weather[0].description}</i>
               </h1>
 
               <h4 className="datetime">{new Date().toLocaleString()} </h4>
@@ -41,7 +41,7 @@ function Weather({ data, wind, forecast, ip }) {
               </h2>
               <h2>
                 {data.clouds.all > 0 ? data.clouds.all + "%" : "No"} cloud cover
-                over {ip.city}
+                over {data.name}
               </h2>
             </div>
             <div>
@@ -194,7 +194,7 @@ export async function getServerSideProps(context) {
   }
   res = await fetch(`${process.env.URL}api/wind`);
   const wind = await res.json();
-  return { props: { data, wind, forecast, ip } };
+  return { props: { data, wind, forecast } };
 }
 
 export default Weather;
