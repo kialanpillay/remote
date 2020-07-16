@@ -247,7 +247,7 @@ function Coronavirus({ data, ip }) {
           }
 
           .title {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
           }
         }
       `}</style>
