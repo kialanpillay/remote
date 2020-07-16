@@ -148,6 +148,14 @@ function Weather({ data, wind, forecast }) {
             width: 100%;
             flex-direction: column;
           }
+
+          .card {
+            width: 95%
+          }
+
+          .title {
+            font-size: 2.2rem;
+          }
         }
       `}</style>
       <style jsx global>{`

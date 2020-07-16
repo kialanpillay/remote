@@ -132,7 +132,6 @@ function Coronavirus({ data, ip }) {
         }
 
         .container_panic {
-          max-height: 100vh;
           padding: 0 0.5rem;
           display: flex;
           flex-direction: column;
@@ -248,7 +247,7 @@ function Coronavirus({ data, ip }) {
           }
 
           .title {
-            font-size: 2rem;
+            font-size: 2.2rem;
           }
         }
       `}</style>
