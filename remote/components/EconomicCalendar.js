@@ -10,7 +10,7 @@ export default class EconomicCalendar extends React.Component {
       "colorTheme": "light",
       "locale": "en",
       "isTransparent": false,
-      "width": "400",
+      "width": "360",
       "height": "500",
       "importanceFilter": "0, 1"
     });

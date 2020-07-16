@@ -114,13 +114,14 @@ function Coronavirus({ data, ip }) {
           </div>
         </div>
         <h1 className="quote">
-          {mode ? "We are facing a human crisis unlike any we have experienced" : ""}
+          {mode
+            ? "We are facing a human crisis unlike any we have experienced"
+            : ""}
         </h1>
       </main>
 
       <style jsx>{`
         .container {
-          max-height: 100vh;
           padding: 0 0.5rem;
           display: flex;
           flex-direction: column;
@@ -240,6 +241,14 @@ function Coronavirus({ data, ip }) {
           .grid {
             width: 100%;
             flex-direction: column;
+          }
+
+          .card {
+            width: 95%;
+          }
+
+          .title {
+            font-size: 2rem;
           }
         }
       `}</style>

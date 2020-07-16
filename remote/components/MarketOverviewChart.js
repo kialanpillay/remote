@@ -13,7 +13,7 @@ export default class MarketOverviewChart extends React.Component {
       locale: "en",
       largeChartUrl: "",
       isTransparent: false,
-      width: "400",
+      width: "360",
       height: "500",
       plotLineColorFalling: "rgba(33, 150, 243, 1)",
       gridLineColor: "rgba(240, 243, 250, 1)",

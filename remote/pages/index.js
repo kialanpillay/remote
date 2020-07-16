@@ -62,7 +62,6 @@ export default function Home() {
 
       <style jsx>{`
         .container {
-          max-height: 100vh;
           padding: 0 0.5rem;
           display: flex;
           flex-direction: column;
@@ -93,6 +92,7 @@ export default function Home() {
           display: flex;
           justify-content: center;
           align-items: center;
+          text-align: center;
         }
 
         a {
@@ -115,6 +115,7 @@ export default function Home() {
           margin: 0;
           line-height: 1.15;
           font-size: 4rem;
+          text-align: center;
         }
 
         .title,

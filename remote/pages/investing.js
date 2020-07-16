@@ -17,7 +17,7 @@ function Investing() {
       </Head>
       <main>
       <h1 className="title">
-          INVESTING<Icon style={{ fontSize: 54, color: "#0070f3" }}>poll</Icon>
+          INVESTING<Icon style={{ fontSize: "3rem", color: "#0070f3" }}>poll</Icon>
         </h1>
         <div className="grid">
           <MarketOverviewChart />
@@ -34,7 +34,6 @@ function Investing() {
 
       <style jsx>{`
         .container {
-          max-height: 100vh;
           padding: 0 0.5rem;
           display: flex;
           flex-direction: column;
@@ -90,6 +89,10 @@ function Investing() {
           .grid {
             width: 100%;
             flex-direction: column;
+          }
+
+          .title {
+            font-size: 2rem;
           }
         }
       `}</style>

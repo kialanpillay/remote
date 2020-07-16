@@ -41,7 +41,6 @@ function News({ data, ip }) {
 
       <style jsx>{`
         .container {
-          min-height: 100vh;
           padding: 0 0.5rem;
           display: flex;
           flex-direction: column;
@@ -118,6 +117,14 @@ function News({ data, ip }) {
           .grid {
             width: 100%;
             flex-direction: column;
+          }
+
+          .card {
+            width: 95%
+          }
+
+          .title {
+            font-size: 2rem;
           }
         }
       `}</style>
