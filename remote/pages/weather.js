@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import Icon from "@material-ui/core/Icon";
-import ForecastLineChart from "../components/ForecastLineChart"
+import ForecastLineChart from "../components/ForecastLineChart";
 
 function Weather({ data, wind, forecast, ip }) {
   return (
@@ -45,10 +45,14 @@ function Weather({ data, wind, forecast, ip }) {
               </h2>
             </div>
             <div>
-              {forecast != null ? <ForecastLineChart data={forecast.daily} type={"temp"}/> : null}
+              {forecast != null ? (
+                <ForecastLineChart data={forecast.daily} type={"temp"} />
+              ) : null}
             </div>
             <div>
-              {forecast != null ? <ForecastLineChart data={forecast.daily} type={"elements"}/> : null}
+              {forecast != null ? (
+                <ForecastLineChart data={forecast.daily} type={"elements"} />
+              ) : null}
             </div>
           </div>
           <div className="home">
@@ -133,7 +137,7 @@ function Weather({ data, wind, forecast, ip }) {
           font-size: 1.5rem;
           font-weight: 600;
         }
-        
+
         .home h2:hover,
         .datetime {
           color: #0070f3;
@@ -165,18 +169,18 @@ function Weather({ data, wind, forecast, ip }) {
 }
 
 export async function getServerSideProps(context) {
-  const api = "http://api.openweathermap.org/data/2.5/"
+  const api = "http://api.openweathermap.org/data/2.5/";
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
   let res = await fetch(
     `${api}weather?lat=${ip.latitude}&lon=${ip.longitude}&appid=${process.env.OWM_KEY}&units=metric`
   );
   let data = await res.json();
-  if (data.cod == "404") {
+  if (data.cod == "400" || data.cod == "404") {
     res = await fetch(`${process.env.URL}api/weather?province=${ip.region}`);
     const location = await res.json();
     res = await fetch(
-      `${api}weather?q=${location.city}
+      `${api}weather?q=${location.city},${ip.country_code}
         &appid=${process.env.OWM_KEY}&units=metric`
     );
     data = await res.json();
@@ -185,8 +189,8 @@ export async function getServerSideProps(context) {
     `${api}onecall?lat=${ip.latitude}&lon=${ip.longitude}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
   );
   let forecast = await res.json();
-  if(forecast.cod == "400" || forecast.cod == "404"){
-    forecast = null
+  if (forecast.cod == "400" || forecast.cod == "404") {
+    forecast = null;
   }
   res = await fetch(`${process.env.URL}api/wind`);
   const wind = await res.json();

@@ -1,12 +1,11 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-const major_cities = {
+const major_cities_za = {
     "Western Cape": "Cape Town",
  
-    "Nothern Cape": "Kimberly",
+    "Northern Cape": "Kimberley",
  
     "Eastern Cape": "Port Elizabeth",
 
-    "North West": "Mahikeng",
+    "North West": "Mafikeng",
 
     "Gauteng": "Johannesburg",
 
@@ -20,7 +19,7 @@ const major_cities = {
   }
 
 export default (req, res) => {
-  const city = major_cities[req.query.province]
+  const city = major_cities_za[req.query.province]
   res.statusCode = 200;
   res.setHeader("Content-Type", "application/json");
   res.end(
