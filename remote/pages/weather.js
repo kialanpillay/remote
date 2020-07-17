@@ -184,7 +184,7 @@ export async function getServerSideProps(context) {
   let res;
   if (ip.country_code == "US") {
     res = await fetch(
-      `${api}weather?lat=${ip.city}&appid=${process.env.OWM_KEY}&units=metric`
+      `${api}weather?q=${ip.city}&appid=${process.env.OWM_KEY}&units=metric`
     );
   } else {
     res = await fetch(
