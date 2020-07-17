@@ -150,7 +150,7 @@ function Weather({ data, wind, forecast }) {
           }
 
           .card {
-            width: 95%
+            width: 95%;
           }
 
           .title {
@@ -180,16 +180,24 @@ export async function getServerSideProps(context) {
   const api = "http://api.openweathermap.org/data/2.5/";
   const rip = await fetch(`https://ipapi.co/json/`);
   const ip = await rip.json();
-  let res = await fetch(
-    `${api}weather?lat=${ip.latitude}&lon=${ip.longitude}&appid=${process.env.OWM_KEY}&units=metric`
-  );
+
+  let res;
+  if (ip.country_code == "US") {
+    res = await fetch(
+      `${api}weather?lat=${ip.city}&appid=${process.env.OWM_KEY}&units=metric`
+    );
+  } else {
+    res = await fetch(
+      `${api}weather?lat=${ip.latitude}&lon=${ip.longitude}&appid=${process.env.OWM_KEY}&units=metric`
+    );
+  }
+
   let data = await res.json();
   if (data.cod == "400" || data.cod == "404") {
     res = await fetch(`${process.env.URL}api/weather?province=${ip.region}`);
     const location = await res.json();
     res = await fetch(
-      `${api}weather?q=${location.city},${ip.country_code}
-        &appid=${process.env.OWM_KEY}&units=metric`
+      `${api}weather?q=${location.city}&appid=${process.env.OWM_KEY}&units=metric`
     );
     data = await res.json();
   }

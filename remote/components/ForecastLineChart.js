@@ -14,17 +14,17 @@ export default class ForecastLineChart extends React.PureComponent {
       data = this.props.data.map((data, idx) => {
         return {
           date: new Date().addDays(current_date, idx).toDateString(),
-          day: data.temp.day,
-          night: data.temp.night,
+          Day: data.temp.day,
+          Night: data.temp.night,
         };
       });
     } else {
       data = this.props.data.map((data, idx) => {
         return {
           date: new Date().addDays(current_date, idx).toDateString(),
-          wind: (data.wind_speed * 3.6).toFixed(0),
-          rain: data.hasOwnProperty("rain") ? data.rain : 0,
-          humidity: data.humidity,
+          Wind: (data.wind_speed * 3.6).toFixed(0),
+          Rain: data.hasOwnProperty("rain") ? data.rain : 0,
+          Humidity: data.humidity,
         };
       });
     }
@@ -34,7 +34,7 @@ export default class ForecastLineChart extends React.PureComponent {
         <YAxis tickLine={false} domain={[0, "auto"]} />
         <XAxis dataKey="date" tick={false} axisLine={false}>
           <Label
-            value={this.props.type == "temp" ? "7-Day Forecast" : "Elements"}
+            value={this.props.type == "temp" ? "7-Day Forecast" : ""}
             offset={0}
             position="insideBottom"
           />
@@ -43,21 +43,21 @@ export default class ForecastLineChart extends React.PureComponent {
         <Tooltip />
         <Line
           type="monotone"
-          dataKey={this.props.type == "temp" ? "day" : "wind"}
+          dataKey={this.props.type == "temp" ? "Day" : "Wind"}
           stroke="#0070f3"
           strokeWidth={3}
           dot={false}
         />
         <Line
           type="monotone"
-          dataKey={this.props.type == "temp" ? "night" : "rain"}
+          dataKey={this.props.type == "temp" ? "Night" : "Rain"}
           stroke="#282c34"
           strokeWidth={3}
           dot={false}
         />
         <Line
           type="monotone"
-          dataKey={this.props.type == "temp" ? "" : "humidity"}
+          dataKey={this.props.type == "temp" ? "" : "Humidity"}
           stroke="orange"
           strokeWidth={3}
           dot={false}

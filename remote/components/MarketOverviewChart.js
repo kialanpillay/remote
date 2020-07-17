@@ -145,7 +145,12 @@ export default class MarketOverviewChart extends React.Component {
     return (
       <div
         id="market_chart"
-        style={{ display: "flex", marginRight: "0.5rem", marginBottom: "1rem" }}
+        style={{
+          display: "flex",
+          marginLeft: "0.5rem",
+          marginRight: "0.5rem",
+          marginBottom: "1rem",
+        }}
       >
         <div className="tradingview-widget-container">
           <div className="tradingview-widget-container__widget"></div>
