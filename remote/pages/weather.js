@@ -178,17 +178,17 @@ function Weather({ data, wind, forecast }) {
 
 export async function getServerSideProps(context) {
   const api = "http://api.openweathermap.org/data/2.5/";
-  const rip = await fetch(`https://ipapi.co/json/`);
+  const rip = await fetch(`http://ip-api.com/json/`);
   const ip = await rip.json();
 
   let res;
-  if (ip.country_code == "US") {
+  if (ip.countryCode == "US") {
     res = await fetch(
       `${api}weather?q=${ip.city}&appid=${process.env.OWM_KEY}&units=metric`
     );
   } else {
     res = await fetch(
-      `${api}weather?lat=${ip.latitude}&lon=${ip.longitude}&appid=${process.env.OWM_KEY}&units=metric`
+      `${api}weather?lat=${ip.lat}&lon=${ip.lon}&appid=${process.env.OWM_KEY}&units=metric`
     );
   }
 
@@ -202,7 +202,7 @@ export async function getServerSideProps(context) {
     data = await res.json();
   }
   res = await fetch(
-    `${api}onecall?lat=${ip.latitude}&lon=${ip.longitude}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
+    `${api}onecall?lat=${ip.lat}&lon=${ip.lon}&exclude=current,minutely,hourly&appid=${process.env.OWM_KEY}&units=metric`
   );
   let forecast = await res.json();
   if (forecast.cod == "400" || forecast.cod == "404") {

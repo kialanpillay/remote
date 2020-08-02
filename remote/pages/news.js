@@ -18,7 +18,7 @@ function News({ data, ip }) {
           NEWS<Icon style={{ fontSize: 54, color: "#0070f3" }}>rss_feed</Icon>
         </h1>
         <div className="card">
-          <h1>Top Headlines from {ip.country_name}</h1>
+          <h1>Top Headlines from {ip.country}</h1>
           {data.articles.slice(0, 11).map((article, id) => {
             return (
               <a
@@ -148,10 +148,10 @@ function News({ data, ip }) {
 
 // This gets called on every request
 export async function getServerSideProps(context) {
-  const rip = await fetch(`https://ipapi.co/json/`);
+  const rip = await fetch(`http://ip-api.com/json/`);
   const ip = await rip.json();
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=${ip.country_code.toLowerCase()}&apiKey=${
+    `https://newsapi.org/v2/top-headlines?country=${ip.countryCode.toLowerCase()}&apiKey=${
       process.env.NEWS_KEY
     }`
   );

@@ -17,8 +17,8 @@ function Difference(data, country) {
 }
 
 function Coronavirus({ data, ip }) {
-  let country = ip.country_name;
-  if (ip.country_name == "United States") {
+  let country = ip.country;
+  if (ip.country== "United States") {
     country = "US";
   }
   const [mode, setMode] = useState(false);
@@ -45,7 +45,7 @@ function Coronavirus({ data, ip }) {
         </h1>
         <div className="card">
           <h1>
-            {ip.country_name.toUpperCase()} | {ip.country_code}
+            {ip.country.toUpperCase()} | {ip.countryCode}
           </h1>
           <div className="grid">
             <div className="data">
@@ -270,7 +270,7 @@ function Coronavirus({ data, ip }) {
 }
 
 export async function getServerSideProps(context) {
-  const rip = await fetch(`https://ipapi.co/json/`);
+  const rip = await fetch(`http://ip-api.com/json/`);
   const ip = await rip.json();
   const res = await fetch(`${process.env.URL}api/coronavirus`);
   const data = await res.json();

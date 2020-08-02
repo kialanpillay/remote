@@ -17,7 +17,7 @@ export default class CaseLineChart extends React.PureComponent {
         confirmed: data.confirmed,
         recovered: data.recovered,
         deaths: data.deaths,
-        active: data.confirmed - data.recovered,
+        active: data.confirmed - data.recovered - data.deaths,
       };
     });
 
